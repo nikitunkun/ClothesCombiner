@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Combinations{% endblock %}
+
+{% block card %}
+    {% for season, clothes in clothes.items %}
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ season }}</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                      <tr>
+                        {% for item in clothes.0 %}
+                            <th scope="col">{{ item.type }}</th>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for combination in clothes %}
+                            <tr>
+                            {% for item in combination %}
+                                    <td>
+                                        <div class="card" style="width: 16rem; height: 28rem;">
+                                            <div style="height: 33rem;"><img src="{{ item.image }}" class="img-fluid" alt="{{ item.title }}"></div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ item.title }}</h5>
+                                            </div>
+                                        </div>
+                                    </td>
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Cloakroom{% endblock %}
+
+{% block card %}
+    <div class="row">
+        {% for item in clothes %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div style="height: 33rem;"><img src="{{ item.image }}" class="img-fluid" alt="{{ item.title }}"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ item.type }}</h6>
+                    </div>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

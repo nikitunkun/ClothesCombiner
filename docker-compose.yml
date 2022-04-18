@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    restart: always
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+  combiner:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./config
+    container_name: combiner
+    command: bash -c "make run"
+    depends_on:
+      - postgres
+    ports:
+      - '8000:8000'
+    restart: always
